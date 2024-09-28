@@ -4,6 +4,7 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const config = require("./config");
 const authRoutes = require("./routes/auth");
+const cors = require("cors");
 
 const mongoose = require("mongoose");
 mongoose
@@ -20,16 +21,17 @@ db.once("open", () => {
   console.log("Connected to MongoDB");
 });
 
+app.use(bodyParser.json());
+app.use(express.static(__dirname));
+app.use(express.json());
+app.use(cors());
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-app.use(bodyParser.json());
-app.use(express.static(__dirname));
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   console.log("HELOOOOOOO");
   res.json({ message: "Get all items" });
 });
-
-app.use("/", authRoutes);

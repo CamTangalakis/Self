@@ -1,11 +1,20 @@
 import React from "react";
+import { loginUser } from "../hooks/auth/index.js";
 
-const LoginPage = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+const LoginPage = ({ setCurrentUser }) => {
+  const [formData, setFormData] = React.useState({
+    username: "",
+    password: "",
+  });
 
-  const handleLogin = () => {
-    console.log(username, password);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await loginUser(formData);
+      setCurrentUser(formData.username);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -15,12 +24,15 @@ const LoginPage = () => {
         <div>
           <label htmlFor="username">Username</label>
           <input
-            type="username"
-            value={username}
+            type="text"
+            value={formData.username}
             required
             name="username"
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Choose username"
+            onChange={(e) =>
+              setFormData({ ...formData, username: e.target.value })
+            }
+            placeholder="Choose Username"
+            display="none"
           />
         </div>
 
@@ -30,15 +42,17 @@ const LoginPage = () => {
             type="password"
             name="password"
             required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Choose password"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+            placeholder="Choose Password"
           />
         </div>
 
         <div>
           <div>
-            <button type="submit" onClick={handleLogin}>
+            <button type="submit" onClick={(e) => handleLogin(e)}>
               Login
             </button>
             <button type="button" href="/">
@@ -47,9 +61,7 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <button type="button" href="/signup">
-              Register
-            </button>
+            <a href="/signup">Register</a>
           </div>
         </div>
       </form>
