@@ -1,5 +1,6 @@
 import React from "react";
 import { loginUser } from "../hooks/auth/index.js";
+import "./index.css";
 
 const LoginPage = ({ setCurrentUser }) => {
   const [formData, setFormData] = React.useState({
@@ -18,11 +19,10 @@ const LoginPage = ({ setCurrentUser }) => {
   };
 
   return (
-    <div>
+    <div className="loginContainer">
       <h1>Login</h1>
-      <form>
-        <div>
-          <label htmlFor="username">Username</label>
+      <form className="formContainer">
+        <div className="loginInput">
           <input
             type="text"
             value={formData.username}
@@ -31,13 +31,13 @@ const LoginPage = ({ setCurrentUser }) => {
             onChange={(e) =>
               setFormData({ ...formData, username: e.target.value })
             }
-            placeholder="Choose Username"
+            placeholder="Enter username"
             display="none"
+            className="loginInput"
           />
         </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className="loginInputContainer">
           <input
             type="password"
             name="password"
@@ -46,22 +46,29 @@ const LoginPage = ({ setCurrentUser }) => {
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
             }
-            placeholder="Choose Password"
+            placeholder="Enter password"
+            className="loginInput"
           />
         </div>
 
         <div>
           <div>
-            <button type="submit" onClick={(e) => handleLogin(e)}>
+            <button
+              type="submit"
+              className="loginButton"
+              onClick={(e) => handleLogin(e)}
+            >
               Login
             </button>
-            <button type="button" href="/">
+            <button type="button" className="loginButton" href="/">
               Cancel
             </button>
           </div>
 
           <div>
-            <a href="/signup">Register</a>
+            <a className="link" href="/signup">
+              Register
+            </a>
           </div>
         </div>
       </form>
