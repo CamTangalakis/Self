@@ -8,17 +8,17 @@ const { userVerification } = require("../middleware/AuthMiddleware");
 
 // Register Route
 router.post("/register", async (req, res) => {
-  const { username, password, createdAt } = req.body;
+  const { username, password, userType, createdAt } = req.body;
 
   try {
     let user = await User.findOne({ username });
     if (user) {
       return res.status(400).json({ msg: "User already exists" });
     }
-    if (!username && !password) {
-      return res.status(400).json({ msg: "Username and password required" });
+    if (!username && !password && !userType) {
+      return res.status(400).json({ msg: "Please complete all fields" });
     }
-    user = new User({ username, password, createdAt });
+    user = new User({ username, password, userType, createdAt });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
