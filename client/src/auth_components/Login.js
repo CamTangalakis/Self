@@ -22,7 +22,7 @@ const LoginPage = ({ setCurrentUser }) => {
     <div className="loginContainer">
       <h1>Login</h1>
       <form className="formContainer">
-        <div className="loginInput">
+        <div className="inputContainer">
           <input
             type="text"
             value={formData.username}
@@ -33,11 +33,11 @@ const LoginPage = ({ setCurrentUser }) => {
             }
             placeholder="Enter username"
             display="none"
-            className="loginInput"
+            className="input"
           />
         </div>
 
-        <div className="loginInputContainer">
+        <div className="inputContainer">
           <input
             type="password"
             name="password"
@@ -47,7 +47,7 @@ const LoginPage = ({ setCurrentUser }) => {
               setFormData({ ...formData, password: e.target.value })
             }
             placeholder="Enter password"
-            className="loginInput"
+            className="input"
           />
         </div>
 
@@ -55,12 +55,12 @@ const LoginPage = ({ setCurrentUser }) => {
           <div>
             <button
               type="submit"
-              className="loginButton"
+              className="formButton"
               onClick={(e) => handleLogin(e)}
             >
               Login
             </button>
-            <button type="button" className="loginButton" href="/">
+            <button type="button" className="formButton" href="/">
               Cancel
             </button>
           </div>

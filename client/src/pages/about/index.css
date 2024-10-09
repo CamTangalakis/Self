@@ -1,0 +1,12 @@
+.about {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-size: 20px;
+  background-color: var(--pink);
+  border-radius: 5px;
+}
+
+.spacer {
+  margin-bottom: 40%;
+}

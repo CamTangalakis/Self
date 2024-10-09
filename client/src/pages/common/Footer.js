@@ -4,7 +4,7 @@ const Footer = ({ currentUser }) => {
   return (
     <div className="footerContainer">
       <div className="footerLinks">
-        <a href="/" className="link">
+        <a href="/contact" className="link">
           Contact Us
         </a>
       </div>

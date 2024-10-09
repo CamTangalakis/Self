@@ -1,4 +1,5 @@
-.loginContainer {
+.loginContainer,
+.signupContainer {
   margin: 15vh auto 50vh;
   padding: 2rem 0rem;
   width: 25%;
@@ -11,18 +12,33 @@
   padding: auto 2rem;
 }
 
-.loginInputContainer {
+.inputContainer {
   padding: 5px;
+  width: 50%;
+  margin: auto;
 }
 
-.loginInput {
+.input {
+  background-color: white;
+  padding: 5px;
   border-radius: 5px;
-  padding: 5px;
 }
 
-.loginButton {
+.formButton {
   padding: 5px;
   margin: 10px;
   background-color: var(--green);
   border-radius: 5px;
+}
+
+.selectInput {
+  margin: auto;
+  width: 78%;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.selectPlaceholder {
+  color: var(--blue);
 }

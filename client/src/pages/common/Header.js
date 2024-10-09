@@ -18,6 +18,45 @@ const Header = ({ pages, currentUser }) => {
     prevScrollPos = currScrollPos;
   };
 
+  const renderLinks = () => {
+    if (currentUser) {
+      return (
+        <div className="headerRight">
+          <div className="headerLinks">
+            <a href="/profile" className="link">
+              Profile
+            </a>
+          </div>
+          <div className="headerLinks">
+            <a href="/about" className="link">
+              About
+            </a>
+          </div>
+          <div className="headerLinks">
+            <a href="/logout" className="link">
+              Logout
+            </a>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="headerRight">
+          <div className="headerLinks">
+            <a href="/about" className="link">
+              About
+            </a>
+          </div>
+          <div className="headerLinks">
+            <a href="/login" className="link">
+              Log In
+            </a>
+          </div>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="headerContainer">
       <div className="headerLeft">
@@ -37,29 +76,7 @@ const Header = ({ pages, currentUser }) => {
         </div>
       </div>
 
-      <div className="headerRight">
-        <div className="headerLinks">
-          <a href="/" className="link">
-            Profile
-          </a>
-        </div>
-        <div className="headerLinks">
-          <a href="/" className="link">
-            About
-          </a>
-        </div>
-        <div className="headerLinks">
-          {currentUser ? (
-            <a href="/logout" className="link">
-              Log Out
-            </a>
-          ) : (
-            <a href="/login" className="link">
-              Log In
-            </a>
-          )}
-        </div>
-      </div>
+      {renderLinks()}
     </div>
   );
 };
