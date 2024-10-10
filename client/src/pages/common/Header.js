@@ -6,7 +6,6 @@ const Header = ({ pages, currentUser }) => {
   window.onscroll = () => {
     let currScrollPos = window.scrollY;
     const el = document.getElementsByClassName("headerContainer")[0];
-    console.log(prevScrollPos, currScrollPos, "<<<===");
 
     if (prevScrollPos < currScrollPos) {
       el.classList.add("hidden");

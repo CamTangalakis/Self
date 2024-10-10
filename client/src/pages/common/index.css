@@ -62,8 +62,8 @@
 .landingOne {
   display: flex;
   flex-direction: row;
-  width: 90%;
-  margin: 2rem auto;
+  width: 80%;
+  margin: 5rem auto;
 }
 
 .landingImage {
@@ -107,9 +107,9 @@
 .landingStatsContainer {
   display: flex;
   flex-direction: column;
-  margin: 2rem auto;
+  margin: 5rem auto;
   position: relative;
-  width: 90%;
+  width: 80%;
 }
 
 .landingStats {
@@ -131,13 +131,13 @@
   margin-left: 2vw;
 }
 .stat2 {
-  margin-left: 22vw;
+  margin-left: 17vw;
 }
 .stat3 {
-  margin-left: 42vw;
+  margin-left: 37vw;
 }
 .stat4 {
-  margin-left: 62vw;
+  margin-left: 57vw;
 }
 
 .headerLeft,

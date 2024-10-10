@@ -2,6 +2,8 @@ const User = require("../models/User");
 const config = require("../config");
 const jwt = require("jsonwebtoken");
 
+// TODO: add verification depravation on logout
+
 module.exports.userVerification = (req, res) => {
   const token = req.cookies.token;
   if (!token) {

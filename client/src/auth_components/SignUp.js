@@ -7,6 +7,11 @@ const SignUpPage = ({ setCurrentUser }) => {
     username: "",
     password: "",
     userType: "",
+    grade: "",
+    school: "",
+    district: "",
+    avatar: "",
+    specialEducation: false,
   });
 
   const handleSignup = async (e) => {
@@ -16,6 +21,116 @@ const SignUpPage = ({ setCurrentUser }) => {
       setCurrentUser(formData.username);
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const renderFormExtension = () => {
+    if (formData.userType == "student") {
+      return (
+        <div>
+          <div className="inputContainer">
+            <input
+              type="text"
+              value={formData.grade}
+              required
+              name="grade"
+              onChange={(e) =>
+                setFormData({ ...formData, grade: e.target.value })
+              }
+              placeholder="Enter grade"
+              display="none"
+              className="input"
+            />
+          </div>
+
+          <div className="inputContainer">
+            <input
+              type="text"
+              value={formData.school}
+              required
+              name="school"
+              onChange={(e) =>
+                setFormData({ ...formData, school: e.target.value })
+              }
+              placeholder="Enter school"
+              display="none"
+              className="input"
+            />
+          </div>
+
+          <div className="inputContainer">
+            <input
+              type="text"
+              value={formData.district}
+              required
+              name="district"
+              onChange={(e) =>
+                setFormData({ ...formData, district: e.target.value })
+              }
+              placeholder="Enter district"
+              display="none"
+              className="input"
+            />
+          </div>
+        </div>
+      );
+    } else if (formData.userType == "administrator") {
+      return (
+        <div>
+          <div className="inputContainer">
+            <input
+              type="text"
+              value={formData.district}
+              required
+              name="district"
+              onChange={(e) =>
+                setFormData({ ...formData, district: e.target.value })
+              }
+              placeholder="Enter district"
+              display="none"
+              className="input"
+            />
+          </div>
+        </div>
+      );
+    } else if (formData.userType == "parent") {
+      return (
+        <div>
+          <div className="inputContainer">
+            <input
+              type="text"
+              value={formData.district}
+              required
+              name="district"
+              onChange={(e) =>
+                setFormData({ ...formData, district: e.target.value })
+              }
+              placeholder="Enter district"
+              display="none"
+              className="input"
+            />
+          </div>
+        </div>
+      );
+    } else if (formData.userType == "educator") {
+      return (
+        <div>
+          <div className="inputContainer">
+            <input
+              type="text"
+              value={formData.district}
+              required
+              name="district"
+              onChange={(e) =>
+                setFormData({ ...formData, district: e.target.value })
+              }
+              placeholder="Enter district"
+              display="none"
+              className="input"
+            />
+          </div>
+        </div>
+      );
     }
   };
 
@@ -70,6 +185,8 @@ const SignUpPage = ({ setCurrentUser }) => {
             <option value="other">Other</option>
           </select>
         </div>
+
+        {formData.userType && renderFormExtension()}
 
         <div>
           <div>

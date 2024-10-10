@@ -74,6 +74,11 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/logout", (req, res) => {
+  // TODO
+  return res.status(200).json({ message: "Logged out" });
+});
+
 router.post("/", userVerification);
 
 module.exports = router;
