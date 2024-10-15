@@ -14,14 +14,27 @@
 
 .inputContainer {
   padding: 5px;
-  width: 50%;
+  width: 75%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputLabel {
+  font-size: 15px;
+  margin: 5px;
+  width: 100%;
 }
 
 .input {
   background-color: white;
   padding: 5px;
   border-radius: 5px;
+}
+
+.imageInput {
+  padding: 5px;
+  margin: auto;
 }
 
 .formButton {
@@ -33,7 +46,7 @@
 
 .selectInput {
   margin: auto;
-  width: 78%;
+  width: 100%;
   background-color: white;
   padding: 5px;
   border-radius: 5px;

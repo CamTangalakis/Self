@@ -10,65 +10,107 @@ start server with //node index.js
 ### User
 
 username: string
+
 password: string
+
 userType: UserTypeEnum
+
 grade: AgeGroupEnum
+
 district?: string
+
 school?: string
+
 avatar?: string
+
 specialEducation: bool
+
 badges?: [Badges]
+
 stickers?: [Stickers]
+
 journal?: [JournalEntries]
+
 tunes?: [Tunes]
+
 stories?: [Stories]
+
 favoritedCourses?: [Courses]
+
 blacklistedTags?: [CourseTagsEnum]
+
 students/children?: [User]
 
 ### Badges
 
 name: string
+
 icon: string / element
+
 description: string
+
 earnedAt?: string
 
 ### Stickers
 
 name: string
+
 icon: string / element
+
 description: string
+
 earnedAt?: string
 
 ### JournalEntries
 
+title?: string
+
+body: string
+
+createdAt: string
+
+updatedAt?: string
+
 ### Tunes
 
 name: string
+
 icon: string / element
+
 audio: string
+
 description: string
+
 earnedAt?: string
 
 ### Stories
 
 name: string
+
 icon: string / element
+
 description: string
+
 body: string
+
 earnedAt?: string
 
 ### Courses
 
 title: string
+
 description: string
+
 lessons: [Lessons]
+
 ageGroup: [AgeGroupEnum]
+
 tags: [CourseTagsEnum]
 
 ### Lessons
 
 title: string
+
 description: string
 
 ## Enums

@@ -32,4 +32,16 @@ const registerUser = async ({ username, password }) => {
   console.log(result);
 };
 
-export { loginUser, registerUser };
+const checkRegisterUsername = async ({ username }) => {
+  const result = await fetch("/registerUsername", {
+    method: "GET",
+    body: {
+      username,
+    },
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+  console.log(result);
+};
+
+export { loginUser, registerUser, checkRegisterUsername };

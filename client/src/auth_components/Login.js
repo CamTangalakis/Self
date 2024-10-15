@@ -23,6 +23,9 @@ const LoginPage = ({ setCurrentUser }) => {
       <h1>Login</h1>
       <form className="formContainer">
         <div className="inputContainer">
+          <label htmlFor="username" className="inputLabel">
+            Username
+          </label>
           <input
             type="text"
             value={formData.username}
@@ -38,6 +41,9 @@ const LoginPage = ({ setCurrentUser }) => {
         </div>
 
         <div className="inputContainer">
+          <label htmlFor="password" className="inputLabel">
+            Password
+          </label>
           <input
             type="password"
             name="password"
@@ -66,6 +72,7 @@ const LoginPage = ({ setCurrentUser }) => {
           </div>
 
           <div>
+            Not a registered user?{" "}
             <a className="link" href="/signup">
               Register
             </a>
