@@ -71,9 +71,9 @@ const LoginPage = ({ setCurrentUser }) => {
             </button>
           </div>
 
-          <div>
+          <div className="formRedirect">
             Not a registered user?{" "}
-            <a className="link" href="/signup">
+            <a className="redirectLink" href="/signup">
               Register
             </a>
           </div>

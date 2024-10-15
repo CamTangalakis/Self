@@ -55,3 +55,18 @@
 .selectPlaceholder {
   color: var(--blue);
 }
+
+.formRedirect {
+  font-size: 14px;
+  margin-top: 1rem;
+  color: var(--secondary);
+}
+
+.redirectLink {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.redirectLink:hover {
+  color: var(--blue);
+}

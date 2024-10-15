@@ -1,7 +1,8 @@
 import React from "react";
 import { registerUser, checkRegisterUsername } from "../hooks/auth";
+import { searchDistricts, searchSchools } from "../hooks/external_calls";
+import { States } from "../utils";
 import "./index.css";
-import { searchDistricts } from "../hooks/external_calls";
 
 const SignUpPage = ({ setCurrentUser }) => {
   const [formData, setFormData] = React.useState({
@@ -16,6 +17,9 @@ const SignUpPage = ({ setCurrentUser }) => {
     specialEducation: false,
   });
   const [usernameMessage, setUsernameMessage] = React.useState("");
+  const [districtList, setDistrictList] = React.useState([]);
+  const [schoolList, setSchoolList] = React.useState([]);
+  const [stateList, setStateList] = React.useState([]);
   const [error, setError] = React.useState({
     message: "",
     field: "",
@@ -32,17 +36,47 @@ const SignUpPage = ({ setCurrentUser }) => {
     }
   };
 
+  const setState = (term) => {
+    setError({ message: "", field: "" });
+    setFormData({ ...formData, state: term });
+
+    const stList = States.filter((state) =>
+      state.name.toLocaleLowerCase().includes(term)
+    );
+    setStateList(stList);
+  };
+
   const setDistrict = async (dis) => {
     setFormData({ ...formData, district: dis });
-    console.log(formData.state, dis, "<<<<automcomplete client");
+    setError({ message: "", field: "" });
 
     if (!formData.state) {
       setError({ message: "Please enter state", field: "state" });
       return;
     }
-    const districtList = await searchDistricts(dis, formData.state);
+    const state = States.filter(
+      (state) =>
+        state.name.toLocaleLowerCase() === formData.state.toLocaleLowerCase()
+    );
+    const disList = await searchDistricts(dis, state[0].code);
 
-    console.log(districtList);
+    setDistrictList(disList.districtList);
+  };
+
+  const setSchool = async (term) => {
+    setFormData({ ...formData, school: term });
+    setError({ message: "", field: "" });
+
+    if (!formData.state) {
+      setError({ message: "Please enter state", field: "state" });
+      return;
+    }
+    const state = States.filter(
+      (state) =>
+        state.name.toLocaleLowerCase() === formData.state.toLocaleLowerCase()
+    );
+    const schList = await searchSchools(term, state[0].code);
+    setSchoolList(schList.schoolMatches);
   };
 
   const displayError = (field) => {
@@ -81,6 +115,25 @@ const SignUpPage = ({ setCurrentUser }) => {
           </div>
 
           <div className="inputContainer">
+            <label className="inputLabel" htmlFor="sped">
+              <input
+                className="input"
+                type="checkbox"
+                checked={formData.specialEducation}
+                value={formData.specialEducation}
+                onClick={() =>
+                  setFormData({
+                    ...formData,
+                    specialEducation: !formData.specialEducation,
+                  })
+                }
+              />
+              Please click here if you are enrolled in a Special Education
+              program
+            </label>
+          </div>
+
+          <div className="inputContainer">
             <label className="inputLabel" htmlFor="state">
               What state do you live in?
             </label>
@@ -89,13 +142,22 @@ const SignUpPage = ({ setCurrentUser }) => {
               value={formData.state}
               required
               name="state"
-              onChange={(e) =>
-                setFormData({ ...formData, state: e.target.value })
-              }
+              onChange={(e) => {
+                setState(e.target.value);
+              }}
               placeholder="Enter state"
               display="none"
               className="input"
+              list="state"
             />
+            <datalist id="state">
+              {stateList?.length &&
+                stateList.map((state) => (
+                  <option value={state.name} key={state.isoCode}>
+                    {state.name}
+                  </option>
+                ))}
+            </datalist>
 
             {displayError("state")}
           </div>
@@ -113,7 +175,16 @@ const SignUpPage = ({ setCurrentUser }) => {
               display="none"
               className="input"
               onChange={(e) => setDistrict(e.target.value)}
+              list="district"
             />
+            <datalist id="district">
+              {districtList?.length &&
+                districtList.map((dis) => (
+                  <option value={dis.districtName} key={dis.ditrictID}>
+                    {dis.districtName}
+                  </option>
+                ))}
+            </datalist>
 
             {displayError("district")}
           </div>
@@ -127,13 +198,20 @@ const SignUpPage = ({ setCurrentUser }) => {
               value={formData.school}
               required
               name="school"
-              onChange={(e) =>
-                setFormData({ ...formData, school: e.target.value })
-              }
+              onChange={(e) => setSchool(e.target.value)}
               placeholder="Enter school"
               display="none"
               className="input"
+              list="school"
             />
+            <datalist id="school">
+              {schoolList?.length &&
+                schoolList.map((school) => (
+                  <option value={school.schoolName} key={school.schoolId}>
+                    {school.schoolName}
+                  </option>
+                ))}
+            </datalist>
 
             {displayError("school")}
           </div>
@@ -365,9 +443,9 @@ const SignUpPage = ({ setCurrentUser }) => {
             </button>
           </div>
 
-          <div>
+          <div className="formRedirect">
             Already registered?{" "}
-            <a className="link" href="/login">
+            <a className="redirectLink" href="/login">
               Log In
             </a>
           </div>
