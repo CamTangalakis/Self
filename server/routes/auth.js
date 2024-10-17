@@ -6,7 +6,7 @@ const config = require("../config");
 const User = require("../models/User");
 const { userVerification } = require("../middleware/AuthMiddleware");
 
-const validateUserRegistration = (req, res) => {
+const validateUserRegistration = (req) => {
   const {
     username,
     password,
@@ -18,7 +18,7 @@ const validateUserRegistration = (req, res) => {
   } = req.body;
 
   if (!userType) {
-    return res.status(400).json({ msg: "Please complete all fields" });
+    return false;
   }
   if (userType === "student") {
     if (
@@ -29,13 +29,14 @@ const validateUserRegistration = (req, res) => {
       !school ||
       !specialEducation
     ) {
-      return res.status(400).json({ msg: "Please complete all fields" });
+      return false;
     }
   } else {
     if (!username || !password || !district || !school) {
-      return res.status(400).json({ msg: "Please complete all fields" });
+      return false;
     }
   }
+  return true;
 };
 
 // Register Route
@@ -61,7 +62,9 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ msg: "Please complete all fields" });
     }
 
-    validateUserRegistration(req, res);
+    if (validateUserRegistration(req) == false) {
+      return res.status(400).json({ msg: "Please complete all fields" });
+    }
 
     user = new User({
       username,
@@ -148,9 +151,61 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/logout", (req, res) => {
-  // TODO
-  return res.status(200).json({ message: "Logged out" });
+router.post("/editUser", async (req, res) => {
+  try {
+    let updatedUser = await User.updateOne(
+      { username: req.body.username },
+      { $set: req.body }
+    );
+
+    return res
+      .status(200)
+      .json({ message: "user profile successfully updated!", updatedUser });
+  } catch (err) {
+    return res.status(400).json({
+      message: "user could not be updated, please try again later" + err,
+    });
+  }
+});
+
+router.get("/getUser", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
+    return res.json(user);
+  } catch (err) {
+    return res
+      .status(400)
+      .json({ message: "could not complete request" + err });
+  }
+});
+
+router.get("/logout", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+
+    if (!user) {
+      return res.status(404).json({ message: "could not find user" + err });
+    }
+
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+
+    jwt.sign(payload, config.jwtSecret, { expiresIn: 0 }, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
+    return res.status(200).json({ message: "user logged out successfully!" });
+  } catch (err) {
+    return res.status(400).json({ message: "error logging out" + err });
+  }
 });
 
 router.post("/", userVerification);
