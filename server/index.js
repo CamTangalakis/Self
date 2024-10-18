@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const authRoutes = require("./routes/auth");
 const cors = require("cors");
+const userRoutes = require("./routes/user");
+const journalRoutes = require("./routes/journalEntry");
+const lessonRoutes = require("./routes/lesson");
+const courseRoutes = require("./routes/course");
 
 const mongoose = require("mongoose");
 mongoose
@@ -29,9 +33,13 @@ app.use(express.json());
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/journal", journalRoutes);
+app.use("/api/course", courseRoutes);
+app.use("/api/lesson", lessonRoutes);
 
 app.get("/", (req, res) => {
-  console.log("HELOOOOOOO");
   res.json({ message: "Get all items" });
 });

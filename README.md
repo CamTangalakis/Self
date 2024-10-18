@@ -9,7 +9,7 @@ start server with //node index.js
 
 ### User
 
-username: string
+username: string, unique id
 
 password: string
 
@@ -112,6 +112,10 @@ tags: [CourseTagsEnum]
 title: string
 
 description: string
+
+tags: [CourseTagsEnum]
+
+ageGroup: [AgeGroupEnum]
 
 ## Enums
 

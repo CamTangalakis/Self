@@ -1,5 +1,6 @@
 // server/models/User.js
 const mongoose = require("mongoose");
+const { CourseTagEnum, UserTypeEnum } = require("../util/enums");
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -13,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   },
   userType: {
     type: String,
-    enum: ["student", "educator", "administrator", "parent", "other"],
+    enum: UserTypeEnum,
     required: true,
   },
   createdAt: {
@@ -55,38 +56,54 @@ const UserSchema = new mongoose.Schema({
   specialEducation: {
     type: Boolean,
   },
-  badges: {
-    type: Array,
-    defualt: [],
-  },
-  stickers: {
-    type: Array,
-    default: [],
-  },
-  journal: {
-    type: Array,
-    default: [],
-  },
-  tunes: {
-    type: Array,
-    defualt: [],
-  },
-  stories: {
-    type: Array,
-    default: [],
-  },
-  favoritedCourses: {
-    type: Array,
-    default: [],
-  },
-  blacklistedTags: {
-    type: Array,
-    default: [],
-  },
-  students: {
-    type: Array,
-    default: [],
-  },
+  badges: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Badge",
+    },
+  ],
+  stickers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Sticker",
+    },
+  ],
+  journal: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "JournalEntry",
+    },
+  ],
+  tunes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Sticker",
+    },
+  ],
+  stories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Story",
+    },
+  ],
+  favoritedCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
+  blacklistedTags: [
+    {
+      type: String,
+      enum: CourseTagEnum,
+    },
+  ],
+  students: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", UserSchema);
