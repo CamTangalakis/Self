@@ -37,6 +37,8 @@ stories?: [Stories]
 
 favoritedCourses?: [Courses]
 
+assignedCourses?: [{Courses, completed}]
+
 blacklistedTags?: [CourseTagsEnum]
 
 students/children?: [User]

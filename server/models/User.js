@@ -92,6 +92,15 @@ const UserSchema = new mongoose.Schema({
       ref: "Course",
     },
   ],
+  assignedCourses: [
+    {
+      course: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
+      completed: {
+        type: Boolean,
+        required: true,
+      },
+    },
+  ],
   blacklistedTags: [
     {
       type: String,
