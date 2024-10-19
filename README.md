@@ -37,11 +37,11 @@ stories?: [Stories]
 
 favoritedCourses?: [Courses]
 
-assignedCourses?: [{Courses, completed}]
+assignedCourses?: [{Courses, completed, archived, priority}]
 
 blacklistedTags?: [CourseTagsEnum]
 
-students/children?: [User]
+students/children?: [{User, relationship}]
 
 ### Badges
 
@@ -115,6 +115,8 @@ title: string
 
 description: string
 
+selDomain: SelDomainEnum
+
 tags: [CourseTagsEnum]
 
 ageGroup: [AgeGroupEnum]
@@ -132,3 +134,7 @@ ageGroup: [AgeGroupEnum]
 ### CourseTags
 
 ['friendship', 'sharing', 'siblings', 'i am me', 'feelings', 'fair play', 'ive got a problem', 'overcoming struggle', 'grown ups', 'navigating life changes', 'growing up', 'disappointment and failure', 'family strucutes', 'love', 'loss and death', 'emotional expression', 'asking for help', 'a walk in their shoes', 'puberty', 'identity', 'bullying', 'respecting diversity', 'acceptance', 'conflict management', 'goal setting', 'social media', 'online safety', 'sexuality', 'relationships', 'i can do it', 'organizing and planning', 'reflection', 'problem solving', 'stress', 'healthy choices', 'ethical decision making', 'substance use', 'consent', 'digital identities', 'life after highschool', 'biology', 'physiology', 'sexual health']
+
+### SelDomain
+
+["Self Awareness", "Self Management", "Responsible Decision Making", "Relationship Skills", "Social Awareness"]

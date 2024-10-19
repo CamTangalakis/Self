@@ -7,10 +7,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    maxLength: 25,
   },
   password: {
     type: String,
     required: true,
+    minLength: 6,
   },
   userType: {
     type: String,
@@ -99,6 +101,8 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
       },
+      archived: Boolean,
+      priority: Number,
     },
   ],
   blacklistedTags: [
@@ -109,8 +113,11 @@ const UserSchema = new mongoose.Schema({
   ],
   students: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      student: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+      relationship: String,
     },
   ],
 });

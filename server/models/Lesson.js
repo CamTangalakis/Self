@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { CourseTagEnum, AgeGroupEnum } = require("../util/enums");
+const { CourseTagEnum, AgeGroupEnum, SelDomainEnum } = require("../util/enums");
 
 const LessonSchema = new mongoose.Schema({
   title: {
@@ -11,6 +11,7 @@ const LessonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  selDomain: SelDomainEnum,
   tags: [
     {
       type: CourseTagEnum,

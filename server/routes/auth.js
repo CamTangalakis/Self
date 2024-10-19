@@ -62,6 +62,18 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ msg: "Please complete all fields" });
     }
 
+    if (username.length > 25) {
+      return res.status(400).json({
+        message: "username too long. please choose a shorter username",
+      });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({
+        message: "password too short. please choose a longer password",
+      });
+    }
+
     if (validateUserRegistration(req) == false) {
       return res.status(400).json({ msg: "Please complete all fields" });
     }

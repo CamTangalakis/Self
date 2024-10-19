@@ -67,4 +67,12 @@ const CourseTagEnum = [
   "sexual health",
 ];
 
-module.exports = { AgeGroupEnum, CourseTagEnum, UserTypeEnum };
+const SelDomainEnum = [
+  "Self Awareness",
+  "Self Management",
+  "Responsible Decision Making",
+  "Relationship Skills",
+  "Social Awareness",
+];
+
+module.exports = { AgeGroupEnum, CourseTagEnum, UserTypeEnum, SelDomainEnum };
