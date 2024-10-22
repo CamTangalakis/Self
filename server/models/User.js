@@ -101,6 +101,7 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
       },
+      grade: Number,
       archived: Boolean,
       priority: Number,
     },
