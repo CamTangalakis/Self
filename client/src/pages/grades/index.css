@@ -1,0 +1,23 @@
+.gradesPage {
+  width: 100%;
+}
+
+.gradesContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: auto;
+  align-content: center;
+}
+
+.gradeDisplay {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid grey;
+}
+
+.grade {
+  margin: 0px 5px;
+}

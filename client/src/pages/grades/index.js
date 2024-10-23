@@ -32,20 +32,25 @@ const Grades = () => {
     setCourses(sampleCourses);
   }, []);
 
+  const gpaTotal = () => {
+    return 3.5;
+  };
+
   // TODO: get assigned courses for user, find all completed courses sorted by date completed,
   // find grades for each course
 
   return (
-    <div>
+    <div className="gradesPage">
       <div className="gradesHeader header">Grades</div>
 
-      <div style={{ display: "grid", width: "50%", margin: "auto" }}>
+      <div className="gradesContainer">
         {courses.map((course) => (
-          <div style={{ display: "flex", margin: "3px" }}>
-            <span>{course.name}</span>
-            <span>{course.grade}</span>
+          <div className="gradeDisplay">
+            <span className="course">{course.name}</span>
+            <span className="grade">{course.grade}</span>
           </div>
         ))}
+        <div>total: {gpaTotal()}</div>
       </div>
     </div>
   );
