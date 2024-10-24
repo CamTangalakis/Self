@@ -33,7 +33,15 @@ const Grades = () => {
   }, []);
 
   const gpaTotal = () => {
-    return 3.5;
+    if (courses.length < 1) {
+      return "Loading...";
+    }
+
+    let total = 0;
+    courses.reduce((acc, course) => (total = acc + course.grade), total);
+    console.log(total, "<<<<");
+
+    return `gpa: ${(total / courses.length).toFixed(2)}`;
   };
 
   // TODO: get assigned courses for user, find all completed courses sorted by date completed,
@@ -50,7 +58,7 @@ const Grades = () => {
             <span className="grade">{course.grade}</span>
           </div>
         ))}
-        <div>total: {gpaTotal()}</div>
+        <div>{gpaTotal()}</div>
       </div>
     </div>
   );

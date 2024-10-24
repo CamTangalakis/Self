@@ -21,6 +21,9 @@ const Pages = [
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState("");
+  // React.useEffect(() => {
+  //   setCurrentUser("Cam");
+  // }, []);
 
   return (
     <div className="App">

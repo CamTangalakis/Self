@@ -75,7 +75,7 @@ const SignUpPage = ({ setCurrentUser }) => {
       (state) =>
         state.name.toLocaleLowerCase() === formData.state.toLocaleLowerCase()
     );
-    const schList = await searchSchools(term, state[0].code);
+    const schList = await searchSchools(term, state[0]?.code);
     setSchoolList(schList.schoolMatches);
   };
 

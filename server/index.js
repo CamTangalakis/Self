@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 8000;
+const port = 3000;
 const bodyParser = require("body-parser");
 const config = require("./config");
 const authRoutes = require("./routes/auth");
@@ -9,6 +9,7 @@ const userRoutes = require("./routes/user");
 const journalRoutes = require("./routes/journalEntry");
 const lessonRoutes = require("./routes/lesson");
 const courseRoutes = require("./routes/course");
+const path = require("path");
 
 const mongoose = require("mongoose");
 mongoose
@@ -26,13 +27,9 @@ db.once("open", () => {
 });
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "build")));
 app.use(cors());
 app.use(express.json());
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
@@ -41,5 +38,9 @@ app.use("/api/course", courseRoutes);
 app.use("/api/lesson", lessonRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Get all items" });
+  return res.json({ message: "Get all items" });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

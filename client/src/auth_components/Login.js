@@ -7,14 +7,20 @@ const LoginPage = ({ setCurrentUser }) => {
     username: "",
     password: "",
   });
+  const [error, setError] = React.useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(formData);
-      setCurrentUser(formData.username);
+      const response = await loginUser(formData);
+      console.log(response.msg);
+      if (response.msg) {
+        setError(response.msg);
+      } else {
+        setCurrentUser(formData.username);
+      }
     } catch (err) {
-      console.log(err);
+      console.log(err, "<<<<<<sss");
     }
   };
 
@@ -56,6 +62,8 @@ const LoginPage = ({ setCurrentUser }) => {
             className="input"
           />
         </div>
+
+        {error && { error }}
 
         <div>
           <div>
