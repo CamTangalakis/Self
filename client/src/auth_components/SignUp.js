@@ -4,7 +4,7 @@ import { searchDistricts, searchSchools } from "../hooks/external_calls";
 import { States } from "../utils";
 import "./index.css";
 
-const SignUpPage = ({ setCurrentUser }) => {
+const SignUpPage = () => {
   const [formData, setFormData] = React.useState({
     username: "",
     password: "",
@@ -28,8 +28,11 @@ const SignUpPage = ({ setCurrentUser }) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await registerUser(formData);
-      setCurrentUser(formData.username);
+      const response = await registerUser(formData);
+      if (response.message == "User successfully registered!") {
+        localStorage.setItem("currentUser", formData.username);
+        window.location.href = "/";
+      }
     } catch (err) {
       console.log(err);
       setError({ message: err, field: "all" });
@@ -58,7 +61,7 @@ const SignUpPage = ({ setCurrentUser }) => {
       (state) =>
         state.name.toLocaleLowerCase() === formData.state.toLocaleLowerCase()
     );
-    const disList = await searchDistricts(dis, state[0].code);
+    const disList = await searchDistricts(dis, state[0]?.code);
 
     setDistrictList(disList.districtList);
   };
@@ -81,13 +84,13 @@ const SignUpPage = ({ setCurrentUser }) => {
 
   const displayError = (field) => {
     if (error.field === field) {
-      return <div>{error.message}</div>;
+      return <div className="errorMessage">{error.message}</div>;
     }
   };
 
   const checkUsernameAvailable = async (username) => {
     const res = await checkRegisterUsername(username);
-    setUsernameMessage(res);
+    setUsernameMessage(res.message);
   };
 
   const renderFormExtension = () => {
@@ -121,7 +124,7 @@ const SignUpPage = ({ setCurrentUser }) => {
                 type="checkbox"
                 checked={formData.specialEducation}
                 value={formData.specialEducation}
-                onClick={() =>
+                onChange={() =>
                   setFormData({
                     ...formData,
                     specialEducation: !formData.specialEducation,
@@ -340,6 +343,33 @@ const SignUpPage = ({ setCurrentUser }) => {
               display="none"
               className="input"
             />
+          </div>
+
+          <div className="inputContainer">
+            <label className="inputLabel" htmlFor="school">
+              What school do you work at?
+            </label>
+            <input
+              type="text"
+              value={formData.school}
+              required
+              name="school"
+              onChange={(e) => setSchool(e.target.value)}
+              placeholder="Enter school"
+              display="none"
+              className="input"
+              list="school"
+            />
+            <datalist id="school">
+              {schoolList?.length &&
+                schoolList.map((school) => (
+                  <option value={school.schoolName} key={school.schoolId}>
+                    {school.schoolName}
+                  </option>
+                ))}
+            </datalist>
+
+            {displayError("school")}
           </div>
         </div>
       );

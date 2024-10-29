@@ -2,7 +2,7 @@ import React from "react";
 import { loginUser } from "../hooks/auth/index.js";
 import "./index.css";
 
-const LoginPage = ({ setCurrentUser }) => {
+const LoginPage = () => {
   const [formData, setFormData] = React.useState({
     username: "",
     password: "",
@@ -13,14 +13,14 @@ const LoginPage = ({ setCurrentUser }) => {
     e.preventDefault();
     try {
       const response = await loginUser(formData);
-      console.log(response.msg);
-      if (response.msg) {
-        setError(response.msg);
+      if (!response.message == "User successfully logged in!") {
+        setError(response.message);
       } else {
-        setCurrentUser(formData.username);
+        localStorage.setItem("currentUser", formData.username);
+        window.location.href = "/courses";
       }
     } catch (err) {
-      console.log(err, "<<<<<<sss");
+      console.log(err);
     }
   };
 
@@ -63,7 +63,7 @@ const LoginPage = ({ setCurrentUser }) => {
           />
         </div>
 
-        {error && { error }}
+        {error && <div className="errorMessage">{error}</div>}
 
         <div>
           <div>

@@ -9,14 +9,7 @@ const loginUser = async ({ username, password }) => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(async (res) => {
-      if (!res.ok) {
-        return res.text();
-      }
-
-      const data = await res.json();
-      localStorage.setItem("token", data.data.token);
-    });
+    }).then((res) => res.json());
     return response;
   } catch (err) {
     console.log(err);
@@ -53,19 +46,21 @@ const registerUser = async ({
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
-  console.log(result);
+  return result;
 };
 
-const checkRegisterUsername = async ({ username }) => {
-  const result = await fetch("/registerUsername", {
-    method: "GET",
-    body: JSON.stringify({
-      username,
-    }),
-  })
+const logoutUser = async (username) => {
+  const result = await fetch(`/api/auth/logout/${username}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
-  console.log(result);
+  return result;
 };
 
-export { loginUser, registerUser, checkRegisterUsername };
+const checkRegisterUsername = async (username) => {
+  const result = await fetch(`/api/user/getUsername/${username}`)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+  return result;
+};
+
+export { loginUser, registerUser, logoutUser, checkRegisterUsername };

@@ -70,3 +70,8 @@
 .redirectLink:hover {
   color: var(--blue);
 }
+
+.errorMessage {
+  color: var(--error);
+  font-weight: 600;
+}

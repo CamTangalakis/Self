@@ -14,13 +14,6 @@ const AgeGroupEnum = [
   "11",
   "12",
 ];
-const UserTypeEnum = [
-  "student",
-  "educator",
-  "parent",
-  "administrator",
-  "other",
-];
 const CourseTagEnum = [
   "friendship",
   "sharing",
@@ -75,4 +68,4 @@ const SelDomainEnum = [
   "Social Awareness",
 ];
 
-module.exports = { AgeGroupEnum, CourseTagEnum, UserTypeEnum, SelDomainEnum };
+module.exports = { AgeGroupEnum, CourseTagEnum, SelDomainEnum };

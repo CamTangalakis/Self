@@ -21,9 +21,13 @@ const Pages = [
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState("");
-  // React.useEffect(() => {
-  //   setCurrentUser("Cam");
-  // }, []);
+
+  React.useEffect(() => {
+    const loggedInUser = localStorage.getItem("currentUser");
+    if (loggedInUser) {
+      setCurrentUser(loggedInUser);
+    }
+  }, [currentUser]);
 
   return (
     <div className="App">

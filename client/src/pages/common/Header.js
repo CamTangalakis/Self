@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import { logoutUser } from "../../hooks/auth";
 
 const Header = ({ pages, currentUser }) => {
   let prevScrollPos = window.scrollY;
@@ -7,14 +8,19 @@ const Header = ({ pages, currentUser }) => {
     let currScrollPos = window.scrollY;
     const el = document.getElementsByClassName("headerContainer")[0];
 
-    if (prevScrollPos < currScrollPos) {
+    if (prevScrollPos < currScrollPos && el) {
       el.classList.add("hidden");
       el.classList.remove("visible");
-    } else if (prevScrollPos > currScrollPos) {
+    } else if (prevScrollPos > currScrollPos && el) {
       el.classList.add("visible");
       el.classList.remove("hidden");
     }
     prevScrollPos = currScrollPos;
+  };
+
+  const handleLogout = async () => {
+    await logoutUser(currentUser);
+    localStorage.clear();
   };
 
   const renderLinks = () => {
@@ -31,9 +37,9 @@ const Header = ({ pages, currentUser }) => {
               About
             </a>
           </div>
-          <div className="headerLinks">
-            <a href="/logout" className="link">
-              Logout
+          <div className="headerLinks" onClick={handleLogout}>
+            <a href="/" className="link">
+              Log Out
             </a>
           </div>
         </div>

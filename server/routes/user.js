@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const { User } = require("../models/User");
 
 router.get("/get", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
 
     if (!user) {
-      return res.status(404).json({ message: "user not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     return res.json(user);
   } catch (err) {
     return res
       .status(400)
-      .json({ message: "could not complete request" + err });
+      .json({ message: "Could not complete request" + err });
   }
 });
 
@@ -27,26 +27,27 @@ router.post("/edit/:id", async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "user profile successfully updated!", updatedUser });
+      .json({ message: "User profile successfully updated!", updatedUser });
   } catch (err) {
     return res.status(400).json({
-      message: "user could not be updated, please try again later" + err,
+      message: "User could not be updated, please try again later" + err,
     });
   }
 });
 
-router.get("/getUsername", async (req, res) => {
-  const { username } = req.body;
+router.get("/getUsername/:id", async (req, res) => {
+  const username = req.params.id;
 
   try {
     let user = await User.findOne({ username });
 
     if (user) {
-      return res
-        .status(200)
-        .json({ msg: "User already exists. Please choose a unique username." });
+      return res.status(200).json({
+        message: "User already exists. Please choose a unique username.",
+      });
+    } else {
+      return res.status(200).json({ message: "Username available!" });
     }
-    return res.status(200).json({ msg: "Username available!" });
   } catch (err) {
     console.log(err.message);
     res.status(500).send("Server Error");

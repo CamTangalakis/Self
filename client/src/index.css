@@ -18,6 +18,7 @@ code {
   --blue: rgb(119, 152, 171);
   --pink: rgb(244, 172, 183);
   --secondary: rgb(46, 64, 82);
+  --error: rgb(172, 17, 43);
 }
 
 .App {
