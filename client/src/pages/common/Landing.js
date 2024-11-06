@@ -2,6 +2,7 @@ import React from "react";
 import * as chalkboard from "../../assets/chalkboard.jpg";
 import * as bookshelf from "../../assets/bookshelf.jpg";
 import "./index.css";
+import DragAndDrop from "../../common/drag_and_drop";
 
 const LandingPage = () => {
   return (
@@ -30,6 +31,8 @@ const LandingPage = () => {
           <div className="landingStat stat4">Unlimited Possibilities</div>
         </div>
       </div>
+
+      <DragAndDrop />
     </div>
   );
 };
