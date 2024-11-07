@@ -2,8 +2,13 @@
 
 Preliminary starter for Self-Educated, a project that encourages school age adolecents to learn about SEL principles of learning.
 
-start client with //npm start
-start server with //node index.js
+To run on your machine:
+paste `git clone https://github.com/CamTangalakis/Self.git` into your terminal to download all packages and dependancies
+
+open the folder in your code editor and open two terminals
+
+cd into client folder and start client with `npm start`
+cd into server folder and start server with `node index.js`
 
 ## Models
 
@@ -117,6 +122,12 @@ description: string
 
 selDomain: SelDomainEnum
 
+estTime: string
+
+digital: [Digital, Hybrid, or Analog]
+
+materials?: [string]
+
 tags: [CourseTagsEnum]
 
 ageGroup: [AgeGroupEnum]
@@ -138,3 +149,34 @@ ageGroup: [AgeGroupEnum]
 ### SelDomain
 
 ["Self Awareness", "Self Management", "Responsible Decision Making", "Relationship Skills", "Social Awareness"]
+
+## Functionality
+
+### Lessons
+
+Administrators and educators have the ability to create lessons or choose from an available list of existing lessons to add to a lesson plan or course. Lessons will be a combination of educational material, activities, and assessments, designed to ensure a student absorbs the targeted information.
+
+The educational materials can be made up of different types of media; pictures, videos, articles, games, etc. The information will be specialized for each age group and target a specific principle of SEL. Each assessment completed will earn the student a grade, and only a passing grade on all assessments will make that lesson completed.
+
+Students are assigned courses that contain lessons in them, and complete each lesson to finish a course. They read, listen to, or interact with the assigned educational materials, and then complete assessments to ensure they have absorbed the pertinent information.
+
+### Assessments
+
+Each lesson will have an accompanying assessment of varying types.
+
+Types of assessments: matching games, quizzes/tests, identification
+
+### Games
+
+Games are utilized to introduce information to students in an accessible and entertaining way.
+
+Types of games: Drag and drop matching, fill in the blank, draw/coloring, competetive trivia, mazes, puzzles,
+
+### Social
+
+All users should be able to leave feedback on existing courses and lessons.
+Users can contact us with questions, comments, concerns about the site, functionality, lessons and courses provided, etc.
+
+### Grades
+
+Students receive grades after taking assessments and completing courses. They can review these grades in their grade portals or profiles. Educators and administrators can assign and review the grades of their students.
