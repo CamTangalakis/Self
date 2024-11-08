@@ -11,6 +11,12 @@ const LessonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  estTime: String,
+  materials: [
+    {
+      material: String,
+    },
+  ],
   selDomain: SelDomainEnum,
   tags: [
     {
