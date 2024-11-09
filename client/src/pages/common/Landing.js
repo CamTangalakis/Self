@@ -3,6 +3,7 @@ import * as chalkboard from "../../assets/chalkboard.jpg";
 import * as bookshelf from "../../assets/bookshelf.jpg";
 import "./index.css";
 import DragAndDrop from "../../common/drag_and_drop";
+import Quiz from "../../common/quiz";
 
 const LandingPage = () => {
   return (
@@ -32,7 +33,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <DragAndDrop />
+      <Quiz />
     </div>
   );
 };
