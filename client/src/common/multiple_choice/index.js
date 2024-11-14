@@ -4,13 +4,10 @@ const MultipleChoice = ({ options, answer, setQuestionNumber }) => {
   const [choice, setChoice] = React.useState("");
 
   const checkAnswer = () => {
-    console.log(choice, answer);
     if (choice === answer) {
-      console.log(true);
       setQuestionNumber((a) => a + 1);
       return true;
     }
-    console.log(false);
     return false;
   };
 

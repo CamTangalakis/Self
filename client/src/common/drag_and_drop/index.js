@@ -16,7 +16,7 @@ const DragAndDrop = () => {
   };
   return (
     <div>
-      <div className="header">DragAndDrop</div>
+      <div className="header">Drag and Drop</div>
 
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="cardList" type="CARD">

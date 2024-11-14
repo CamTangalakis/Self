@@ -39,7 +39,6 @@ const Grades = () => {
 
     let total = 0;
     courses.reduce((acc, course) => (total = acc + course.grade), total);
-    console.log(total, "<<<<");
 
     return `gpa: ${(total / courses.length).toFixed(2)}`;
   };
