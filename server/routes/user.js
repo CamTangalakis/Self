@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../models/User");
 
-router.get("/get", async (req, res) => {
+router.get("/get/:id", async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.params.id });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -21,7 +21,7 @@ router.get("/get", async (req, res) => {
 router.post("/edit/:id", async (req, res) => {
   try {
     let updatedUser = await User.updateOne(
-      { username: req.body.username },
+      { username: req.params.id },
       { $set: req.body }
     );
 

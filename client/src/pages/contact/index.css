@@ -1,0 +1,28 @@
+.contactFormContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 2rem auto;
+}
+
+.contactInputContainer {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin: 1rem;
+}
+
+.contactInput {
+  width: 100%;
+  border-radius: 10px;
+  max-width: 35vw;
+  padding: 5px;
+}
+
+.contactSubmit {
+  width: 20%;
+  margin: auto;
+  padding: 4px;
+  background-color: var(--blue);
+  border-radius: 10px;
+  color: white;
+}

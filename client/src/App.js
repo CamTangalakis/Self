@@ -23,10 +23,11 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState("");
 
   React.useEffect(() => {
-    const loggedInUser = localStorage.getItem("currentUser");
-    if (loggedInUser) {
-      setCurrentUser(loggedInUser);
-    }
+    // const loggedInUser = localStorage.getItem("currentUser");
+    // if (loggedInUser) {
+    //   setCurrentUser(loggedInUser);
+    // }
+    setCurrentUser("hello");
   }, [currentUser]);
 
   return (
