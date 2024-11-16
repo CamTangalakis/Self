@@ -17,10 +17,19 @@ const editUser = async ({
   grade,
   school,
   district,
-  state,
   avatar,
   specialEducation,
 }) => {
+  console.log(
+    username,
+    password,
+    userType,
+    grade,
+    school,
+    district,
+    avatar,
+    specialEducation
+  );
   try {
     const response = await fetch(`/api/user/edit/${username}`, {
       method: "POST",
@@ -30,7 +39,6 @@ const editUser = async ({
         grade,
         school,
         district,
-        state,
         avatar,
         specialEducation,
       }),

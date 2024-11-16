@@ -31,41 +31,47 @@ const Contact = () => {
       {showAlert && <Alert severity="success">Thanks for your input!</Alert>}
       <form className="contactFormContainer">
         <div className="contactInputContainer">
-          <label htmlFor="contactName">Name</label>
-          <input
-            type="text"
-            className="contactInput"
-            id="contactName"
-            value={contactData.name}
-            onChange={(e) =>
-              setContactData({ ...contactData, name: e.target.value })
-            }
-          />
+          <label htmlFor="contactName">
+            Name
+            <input
+              type="text"
+              className="contactInput"
+              id="contactName"
+              value={contactData.name}
+              onChange={(e) =>
+                setContactData({ ...contactData, name: e.target.value })
+              }
+            />
+          </label>
         </div>
 
         <div className="contactInputContainer">
-          <label htmlFor="contactEmail">Email</label>
-          <input
-            type="text"
-            className="contactInput"
-            id="contactEmail"
-            value={contactData.email}
-            onChange={(e) =>
-              setContactData({ ...contactData, email: e.target.value })
-            }
-          />
+          <label htmlFor="contactEmail">
+            Email
+            <input
+              type="text"
+              className="contactInput"
+              id="contactEmail"
+              value={contactData.email}
+              onChange={(e) =>
+                setContactData({ ...contactData, email: e.target.value })
+              }
+            />
+          </label>
         </div>
 
         <div className="contactInputContainer">
-          <label htmlFor="contactComment">Comment</label>
-          <textarea
-            className="contactInput"
-            id="contactComment"
-            value={contactData.comment}
-            onChange={(e) =>
-              setContactData({ ...contactData, comment: e.target.value })
-            }
-          />
+          <label htmlFor="contactComment">
+            Comment
+            <textarea
+              className="contactInput"
+              id="contactComment"
+              value={contactData.comment}
+              onChange={(e) =>
+                setContactData({ ...contactData, comment: e.target.value })
+              }
+            />
+          </label>
         </div>
 
         <button

@@ -1,0 +1,26 @@
+.editingPortalContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.editingLabel {
+  display: flex;
+  width: 50%;
+  margin: 5px auto;
+  justify-content: space-between;
+}
+
+.editingInput {
+  width: 75%;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.editUserButton {
+  width: fit-content;
+  margin: 5px auto;
+  padding: 5px 10px;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 10px;
+}
