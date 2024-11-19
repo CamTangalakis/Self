@@ -21,7 +21,7 @@ const Profile = ({ currentUser }) => {
       setUserInfo({ userInfo, ...info });
     };
     getUserInfo();
-  }, []);
+  }, [userInfo]);
 
   const editUserInfo = async (e) => {
     e.preventDefault();

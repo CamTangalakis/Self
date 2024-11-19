@@ -2,6 +2,7 @@ import React from "react";
 import * as chalkboard from "../../assets/chalkboard.jpg";
 import * as bookshelf from "../../assets/bookshelf.jpg";
 import "./index.css";
+import FlipperTile from "../../common/flipper";
 
 const LandingPage = () => {
   return (
@@ -19,6 +20,17 @@ const LandingPage = () => {
         <span className="landingFiller1"> </span>
         <span className="landingFiller2"> </span>
         Premier Learning Center for SEL Education
+      </div>
+
+      <div className="flipperTileContainer">
+        <FlipperTile
+          front={"ooh look a flipper tile!"}
+          back={"fuck yeah, it flips!"}
+        />
+
+        <FlipperTile front={"look another one!"} back={"this one flips, too"} />
+
+        <FlipperTile front={"wow there's more!"} back={"tired of it yet?"} />
       </div>
 
       <div className="landingStatsContainer">

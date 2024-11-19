@@ -23,11 +23,10 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState("");
 
   React.useEffect(() => {
-    // const loggedInUser = localStorage.getItem("currentUser");
-    // if (loggedInUser) {
-    //   setCurrentUser(loggedInUser);
-    // }
-    setCurrentUser("hello");
+    const loggedInUser = localStorage.getItem("currentUser");
+    if (loggedInUser) {
+      setCurrentUser(loggedInUser);
+    }
   }, [currentUser]);
 
   return (
@@ -58,6 +57,7 @@ function App() {
           <Route path="/explore" element={<Explore />} />
         </Routes>
       </div>
+
       <div className="footer">
         <Footer currentUser={currentUser} />
       </div>

@@ -111,6 +111,7 @@
   margin: 5rem auto;
   position: relative;
   width: 80%;
+  height: fit-content;
 }
 
 .landingStats {
@@ -121,9 +122,9 @@
 .landingStat {
   background-color: var(--green);
   border-radius: 50px;
-  margin: 10rem auto;
+  margin: 10% auto;
   padding: 1rem;
-  width: 20rem;
+  width: 20%;
   color: var(--text);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -168,6 +169,14 @@
 
 .link:hover {
   color: var(--blue);
+}
+
+.flipperTileContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70%;
+  margin: auto;
 }
 
 /* --------------------------- footer ------------------------- */
