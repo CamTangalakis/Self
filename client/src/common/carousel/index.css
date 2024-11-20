@@ -1,0 +1,15 @@
+.carouselContainer {
+  display: flex;
+  margin: auto;
+}
+
+.carouselItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselImage {
+  width: 250px;
+  aspect-ratio: 3 / 4;
+  margin: auto;
+}

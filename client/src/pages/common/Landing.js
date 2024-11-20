@@ -3,6 +3,7 @@ import * as chalkboard from "../../assets/chalkboard.jpg";
 import * as bookshelf from "../../assets/bookshelf.jpg";
 import "./index.css";
 import FlipperTile from "../../common/flipper";
+import Carousel from "../../common/carousel";
 
 const LandingPage = () => {
   return (
@@ -42,6 +43,8 @@ const LandingPage = () => {
           <div className="landingStat stat4">Unlimited Possibilities</div>
         </div>
       </div>
+
+      <Carousel />
     </div>
   );
 };
