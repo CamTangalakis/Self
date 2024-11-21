@@ -1,15 +1,53 @@
 .carouselContainer {
   display: flex;
   margin: auto;
+  overflow: hidden;
+  height: 250px;
 }
 
 .carouselItem {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .carouselImage {
   width: 250px;
   aspect-ratio: 3 / 4;
+  height: 100%;
   margin: auto;
+}
+
+.carouselText {
+  position: relative;
+  bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  font-weight: 600;
+  text-wrap: wrap;
+  width: 100%;
+}
+
+.carouselButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  opacity: 0;
+  width: 2rem;
+  height: 200px;
+  bottom: -0.3rem;
+
+  &:hover {
+    background-color: var(--blue);
+    opacity: 0.5;
+  }
+}
+
+.--prev {
+  left: 2rem;
+}
+
+.--next {
+  right: 2rem;
 }

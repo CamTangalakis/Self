@@ -7,22 +7,22 @@ import "./index.css";
 
 const items = [
   {
-    title: "dfagadf",
+    title: "ooh look a puppy",
     desc: "dafgadfg",
     image: puppy,
   },
   {
-    title: "dfderfhgsfgjaagadf",
+    title: "heres a pupy and a kitty",
     desc: "dafdafgdvgadfg",
     image: puppykitty,
   },
   {
-    title: "dsfasdgdfagadf",
+    title: "loook how cute",
     desc: "asarderghdfvdafgadfg",
     image: anotherpuppy,
   },
   {
-    title: "uiouhykhgjkdfagadf",
+    title: "this is what atticus looked like when he was a baby :)",
     desc: "hnmgyuijkgdafgadfg",
     image: corgipuppy,
   },
@@ -49,23 +49,30 @@ const Carousel = () => {
     }
   };
 
-  setTimeout(() => {
-    nextSlide();
-  }, 5000);
+  React.useEffect(() => {
+    setTimeout(() => {
+      nextSlide();
+    }, 5000);
+  }, [index]);
 
   return (
     <div className="carouselContainer">
-      <button onClick={prevSlide}>≺</button>
+      <button className="carouselButton --prev" onClick={prevSlide}>
+        ≺
+      </button>
       <div className="carouselItem">
         <img
           className="carouselImage"
           style={{ height: "200px" }}
           src={items[index].image.default}
+          alt={items[index].image.alt}
         />
-        {items[index].title}
+        <div className="carouselText">{items[index].title}</div>
       </div>
 
-      <button onClick={nextSlide}>≻</button>
+      <button className="carouselButton --next" onClick={nextSlide}>
+        ≻
+      </button>
     </div>
   );
 };

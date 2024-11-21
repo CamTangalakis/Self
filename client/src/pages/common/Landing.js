@@ -9,7 +9,11 @@ const LandingPage = () => {
   return (
     <div className="landingContainer">
       <div className="landingOne">
-        <img src={chalkboard.default} className="landingImage" />
+        <img
+          src={chalkboard.default}
+          alt="chalkboard"
+          className="landingImage"
+        />
 
         <div className="landingHeader">
           <span>SELf Educated</span>
@@ -35,7 +39,7 @@ const LandingPage = () => {
       </div>
 
       <div className="landingStatsContainer">
-        <img src={bookshelf.default} className="landingImage" />
+        <img src={bookshelf.default} alt="bookshelf" className="landingImage" />
         <div className="landingStats">
           <div className="landingStat stat1">30,000 Students Served</div>
           <div className="landingStat stat2">20 Disctricts Represented</div>
