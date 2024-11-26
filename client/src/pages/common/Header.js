@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import { logoutUser } from "../../hooks/auth";
+import { logoutUser } from "../../hooks/auth.js";
 
 const Header = ({ pages, currentUser }) => {
   let prevScrollPos = window.scrollY;

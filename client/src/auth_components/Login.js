@@ -1,5 +1,5 @@
 import React from "react";
-import { loginUser } from "../hooks/auth/index.js";
+import { loginUser } from "../hooks/auth.js";
 import "./index.css";
 
 const LoginPage = () => {

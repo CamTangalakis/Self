@@ -1,5 +1,5 @@
 import React from "react";
-import { editUser, getUser } from "../../hooks/user";
+import { editUser, getUser } from "../../hooks/user.js";
 import "./index.css";
 
 const Profile = ({ currentUser }) => {

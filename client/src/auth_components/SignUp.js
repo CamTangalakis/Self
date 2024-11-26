@@ -1,6 +1,6 @@
 import React from "react";
-import { registerUser, checkRegisterUsername } from "../hooks/auth";
-import { searchDistricts, searchSchools } from "../hooks/external_calls";
+import { registerUser, checkRegisterUsername } from "../hooks/auth.js";
+import { searchDistricts, searchSchools } from "../hooks/external.js";
 import { States } from "../utils";
 import "./index.css";
 
