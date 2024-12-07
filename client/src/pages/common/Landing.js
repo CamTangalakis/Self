@@ -4,6 +4,7 @@ import * as bookshelf from "../../assets/bookshelf.jpg";
 import "./index.css";
 import FlipperTile from "../../common/flipper";
 import Carousel from "../../common/carousel";
+import DragAndDrop from "../../common/drag_and_drop";
 
 const LandingPage = () => {
   return (
@@ -49,6 +50,7 @@ const LandingPage = () => {
       </div>
 
       <Carousel />
+      <DragAndDrop />
     </div>
   );
 };
